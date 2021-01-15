@@ -1,0 +1,8 @@
+name: groovy-github-actions
+on: [push]
+jobs:
+  check-groovy:
+    runs-on: groovy:3.0-jre11
+    steps:
+      - uses: actions/checkout@v2
+      - run: groovy scripts/telegram.groovy
