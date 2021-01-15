@@ -24,7 +24,7 @@ http = configure{
     request.contentType = JSON[0]
 }
 
-['es'].each{ lang ->
+['es','cat','astu','eus','en'].each{ lang ->
     
     String[]found
 
@@ -48,7 +48,7 @@ http = configure{
     }
 
     html = """
-    <a href="https://jagedn.github.io/calendario-cientifico/images/celebridades/1.png"> </a>
+    <a href="https://jagedn.github.io/calendario-cientifico/images/celebridades/${found[2]}.png"> </a>
     ${found[3]}    
     """
 
@@ -61,4 +61,19 @@ http = configure{
             disable_web_page_preview: false,
         ]
     }
+}
+
+html = """
+<i>Proyecto FECYT FTC-2019-15288</i>
+<a href="http://www.igm.ule-csic.es/calendario-cientifico">Puedes descargar el calendario y la guía didáctica en nuestra web</a>
+"""
+
+http.post{
+    request.uri.path = "/bot$TELEGRAM_TOKEN/sendMessage"
+    request.body = [
+        chat_id: TELEGRAM_CHANNEL,
+        text: html,
+        parse_mode: 'HTML',
+        disable_web_page_preview: false,
+    ]
 }
