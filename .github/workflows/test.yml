@@ -5,7 +5,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GROOVY_VERSION: 3.0.5
-    environment: production
     steps:
       - uses: actions/checkout@v2
       - id: install
