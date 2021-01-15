@@ -24,7 +24,8 @@ http = configure{
     request.contentType = JSON[0]
 }
 
-html = ""
+html = ''
+
 ['es','cat','astu','eus','en'].each{ lang ->
     
     String[]found
@@ -48,15 +49,15 @@ html = ""
         return
     }
 
-    if( !html )
-        html = """<a href="https://jagedn.github.io/calendario-cientifico/images/celebridades/${found[2]}.png"> </a>
-    """
+    if( !html ){
+        html = """@CalCientifico        
+        <a href="https://jagedn.github.io/calendario-cientifico/images/celebridades/${found[2]}.png"> </a>
+        """
+    }
 
-    html +="
-    
-    ${found[3]}
+    html +="""${found[3]}
     -------
-    "
+    """
 }
 
 html += """
