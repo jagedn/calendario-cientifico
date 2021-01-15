@@ -5,13 +5,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: sdkman/sdkman-action@master
-        id: sdkman
-        with:
-         candidate: groovy
-         version: 3.0.5
       - id: install
         shell: bash
         run: |
+          curl -s "https://get.sdkman.io" | bash
+          source "$HOME/.sdkman/bin/sdkman-init.sh"
           sdk install groovy 3.0.5
-      - run: groovy scripts/telegram.groovy
+          groovy scripts/telegram.groovy
