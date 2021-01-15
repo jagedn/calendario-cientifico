@@ -14,6 +14,11 @@ println "Processing $year/$month/$day"
 TELEGRAM_CHANNEL=System.getenv("TELEGRAM_CHANNEL")
 TELEGRAM_TOKEN=System.getenv("TELEGRAM_TOKEN")
 
+if( !TELEGRAM_CHANNEL || !TELEGRAM_TOKEN ){
+    println "Necesito la configuracion de telegram"
+    return
+}
+
 http = configure{
     request.uri = "https://api.telegram.org"
     request.contentType = JSON[0]
