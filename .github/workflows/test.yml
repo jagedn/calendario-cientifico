@@ -10,4 +10,8 @@ jobs:
         with:
          candidate: groovy
          version: 3.0.5
+      - id: install
+        shell: bash
+        run: |
+          sdk install groovy 3.0.5
       - run: groovy scripts/telegram.groovy
