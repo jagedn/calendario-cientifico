@@ -26,7 +26,7 @@ http = configure{
 
 html = ''
 
-['es','cat','astu','eus','en'].each{ lang ->
+['es','astu','cat','eus','gal','en'].each{ lang ->
     
     String[]found
 
@@ -35,9 +35,9 @@ html = ''
         String line
         while( (line=reader.readLine()) != null){
             def fields = line.split('\t')
-            if( fields.length != 4)
+            if( fields.length != 5)
                 continue
-            if( fields[0] as int == day && fields[1] as int == month){
+            if( fields[0] as int == day && fields[1] as int == month && fields[2] as int == year){
                 found = fields
                 break
             }
@@ -51,11 +51,11 @@ html = ''
 
     if( !html ){
         html = """@CalCientifico        
-        <a href="https://jagedn.github.io/calendario-cientifico/images/celebridades/${found[2]}.png"> </a>
+        <a href="https://jagedn.github.io/calendario-cientifico/images/celebridades/${found[3]}.png"> </a>
         """
     }
 
-    html +="""${found[3]}
+    html +="""${found[4]}
     -------
     """
 }
