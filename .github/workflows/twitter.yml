@@ -41,7 +41,6 @@ jobs:
       - name: manual
         if: github.event.inputs.lang
         run: |          
-          head -n 1 .env
           npm install
           node scripts/twitter.js ${{ github.event.inputs.lang }} ${{ github.event.inputs.year }} ${{ github.event.inputs.month }} ${{ github.event.inputs.day }} 
 
