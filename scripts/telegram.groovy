@@ -24,13 +24,13 @@ http = configure{
     request.contentType = JSON[0]
 }
 
-html = ''
+html = ""
 
-['es','astu','cat','eus','gal','en'].each{ lang ->
+['es','gal','astu','eus','cat','arag','en'].each{ lang ->
     
     String[]found
 
-    new File("docs/csv/${year}_${lang}.tsv").withReader{ reader ->
+    new File("static/data/csv/${year}_${lang}.tsv").withReader{ reader ->
         reader.readLine()
         String line
         while( (line=reader.readLine()) != null){
@@ -49,19 +49,21 @@ html = ''
         return
     }
 
+    String title=  found[4].split('\\.').first()
+	String body=  found[4].split('\\.').drop(1).join(' ')
+
     if( !html ){
-        html = """@CalCientifico        
-        <a href="https://jagedn.github.io/calendario-cientifico/images/celebridades/${found[3]}.png"> </a>
-        """
+        html = "<a href='https://calendario-cientifico-escolar.github.io/images/personajes/${found[3]}.png'> </a>"
     }
 
-    html +="""${found[4]}
-    -------
-    """
+    html +="""
+<b>$title</b>
+$body
+"""
 }
 
 html += """
-<i>Proyecto FECYT FTC-2019-15288</i>
+<i>Proyecto FECYT FTC 2019 15288</i>
 <a href="http://www.igm.ule-csic.es/calendario-cientifico">Puedes descargar el calendario y la guía didáctica en nuestra web</a>
 """
 

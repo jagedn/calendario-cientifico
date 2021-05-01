@@ -1,0 +1,40 @@
+name: CI
+on: 
+  push:
+    branches:
+    - main
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v2
+
+      - name: Update theme
+        run: git submodule update --init --recursive
+
+      - name: api
+        shell: bash
+        run: |
+          curl -s "https://get.sdkman.io" | bash
+          source "$HOME/.sdkman/bin/sdkman-init.sh"
+          sdk install groovy $GROOVY_VERSION
+          groovy scripts/api.groovy static/data/csv/2021 static/data/json
+
+      - name: Setup hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: "0.70.0"
+
+      - name: Build
+        run: hugo --minify
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{secrets.ACTIONS_DEPLOY_KEY}}
+          external_repository: calendario-cientifico-escolar/calendario-cientifico-escolar.github.io
+          publish_dir: ./public
+          user_name: Jorge Aguilera
+          user_email: jagedn@gmail.com
+          publish_branch: gh-pages
