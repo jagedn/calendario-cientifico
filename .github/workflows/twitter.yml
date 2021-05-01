@@ -47,90 +47,41 @@ jobs:
       - name: esp
         if: github.event.schedule=='0 4 * * *'
         run: |          
-          curl -s "https://get.sdkman.io" | bash
-          source "$HOME/.sdkman/bin/sdkman-init.sh"
-          sdk install groovy $GROOVY_VERSION          
-          groovy \
-            -Dtwitter4j.oauth.consumerKey=${CONSUMERKEY} \
-            -Dtwitter4j.oauth.consumerSecret=${CONSUMERSECRET} \
-            -Dtwitter4j.oauth.accessToken=${ACCESSTOKEN} \
-            -Dtwitter4j.oauth.accessTokenSecret=${ACCESSTOKENSECRET} \
-            scripts/twitter.groovy es ${{ github.event.inputs.year }} ${{ github.event.inputs.month }} ${{ github.event.inputs.day }}
+          npm install
+          node scripts/twitter.js es ${{ github.event.inputs.year }} ${{ github.event.inputs.month }} ${{ github.event.inputs.day }} 
 
       - name: gal
         if: github.event.schedule=='5 4 * * *'
         run: |          
-          curl -s "https://get.sdkman.io" | bash
-          source "$HOME/.sdkman/bin/sdkman-init.sh"
-          sdk install groovy $GROOVY_VERSION          
-          groovy \
-            -Dtwitter4j.oauth.consumerKey=${CONSUMERKEY} \
-            -Dtwitter4j.oauth.consumerSecret=${CONSUMERSECRET} \
-            -Dtwitter4j.oauth.accessToken=${ACCESSTOKEN} \
-            -Dtwitter4j.oauth.accessTokenSecret=${ACCESSTOKENSECRET} \
-            scripts/twitter.groovy gal ${{ github.event.inputs.year }} ${{ github.event.inputs.month }} ${{ github.event.inputs.day }} 
+          npm install
+          node scripts/twitter.js gal ${{ github.event.inputs.year }} ${{ github.event.inputs.month }} ${{ github.event.inputs.day }} 
 
       - name: astu
         if: github.event.schedule=='10 4 * * *'
         run: |          
-          curl -s "https://get.sdkman.io" | bash
-          source "$HOME/.sdkman/bin/sdkman-init.sh"
-          sdk install groovy $GROOVY_VERSION          
-          groovy \
-            -Dtwitter4j.oauth.consumerKey=${CONSUMERKEY} \
-            -Dtwitter4j.oauth.consumerSecret=${CONSUMERSECRET} \
-            -Dtwitter4j.oauth.accessToken=${ACCESSTOKEN} \
-            -Dtwitter4j.oauth.accessTokenSecret=${ACCESSTOKENSECRET} \
-            scripts/twitter.groovy astu ${{ github.event.inputs.year }} ${{ github.event.inputs.month }} ${{ github.event.inputs.day }} 
+          npm install
+          node scripts/twitter.js astu ${{ github.event.inputs.year }} ${{ github.event.inputs.month }} ${{ github.event.inputs.day }} 
 
       - name: eus
         if: github.event.schedule=='15 4 * * *'
         run: |          
-          curl -s "https://get.sdkman.io" | bash
-          source "$HOME/.sdkman/bin/sdkman-init.sh"
-          sdk install groovy $GROOVY_VERSION          
-          groovy \
-            -Dtwitter4j.oauth.consumerKey=${CONSUMERKEY} \
-            -Dtwitter4j.oauth.consumerSecret=${CONSUMERSECRET} \
-            -Dtwitter4j.oauth.accessToken=${ACCESSTOKEN} \
-            -Dtwitter4j.oauth.accessTokenSecret=${ACCESSTOKENSECRET} \
-            scripts/twitter.groovy eus ${{ github.event.inputs.year }} ${{ github.event.inputs.month }} ${{ github.event.inputs.day }} 
+          npm install
+          node scripts/twitter.js eus ${{ github.event.inputs.year }} ${{ github.event.inputs.month }} ${{ github.event.inputs.day }} 
 
       - name: cat
         if: github.event.schedule=='20 4 * * *'
         run: |          
-          curl -s "https://get.sdkman.io" | bash
-          source "$HOME/.sdkman/bin/sdkman-init.sh"
-          sdk install groovy $GROOVY_VERSION          
-          groovy \
-            -Dtwitter4j.oauth.consumerKey=${CONSUMERKEY} \
-            -Dtwitter4j.oauth.consumerSecret=${CONSUMERSECRET} \
-            -Dtwitter4j.oauth.accessToken=${ACCESSTOKEN} \
-            -Dtwitter4j.oauth.accessTokenSecret=${ACCESSTOKENSECRET} \
-            scripts/twitter.groovy cat ${{ github.event.inputs.year }} ${{ github.event.inputs.month }} ${{ github.event.inputs.day }} 
+          npm install
+          node scripts/twitter.js cat ${{ github.event.inputs.year }} ${{ github.event.inputs.month }} ${{ github.event.inputs.day }} 
 
       - name: arag
         if: github.event.schedule=='25 4 * * *'
         run: |          
-          curl -s "https://get.sdkman.io" | bash
-          source "$HOME/.sdkman/bin/sdkman-init.sh"
-          sdk install groovy $GROOVY_VERSION          
-          groovy \
-            -Dtwitter4j.oauth.consumerKey=${CONSUMERKEY} \
-            -Dtwitter4j.oauth.consumerSecret=${CONSUMERSECRET} \
-            -Dtwitter4j.oauth.accessToken=${ACCESSTOKEN} \
-            -Dtwitter4j.oauth.accessTokenSecret=${ACCESSTOKENSECRET} \
-            scripts/twitter.groovy arag ${{ github.event.inputs.year }} ${{ github.event.inputs.month }} ${{ github.event.inputs.day }} 
+          npm install
+          node scripts/twitter.js arag ${{ github.event.inputs.year }} ${{ github.event.inputs.month }} ${{ github.event.inputs.day }} 
 
       - name: en
         if: github.event.schedule=='30 4 * * *'
         run: |          
-          curl -s "https://get.sdkman.io" | bash
-          source "$HOME/.sdkman/bin/sdkman-init.sh"
-          sdk install groovy $GROOVY_VERSION          
-          groovy \
-            -Dtwitter4j.oauth.consumerKey=${CONSUMERKEY} \
-            -Dtwitter4j.oauth.consumerSecret=${CONSUMERSECRET} \
-            -Dtwitter4j.oauth.accessToken=${ACCESSTOKEN} \
-            -Dtwitter4j.oauth.accessTokenSecret=${ACCESSTOKENSECRET} \
-            scripts/twitter.groovy en ${{ github.event.inputs.year }} ${{ github.event.inputs.month }} ${{ github.event.inputs.day }} 
+          npm install
+          node scripts/twitter.js en ${{ github.event.inputs.year }} ${{ github.event.inputs.month }} ${{ github.event.inputs.day }} 
