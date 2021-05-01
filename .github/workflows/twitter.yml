@@ -29,10 +29,10 @@ jobs:
   check-groovy:
     runs-on: ubuntu-latest
     env:
-      CONSUMERKEY: ${{ secrets.CONSUMERKEY }}
-      CONSUMERSECRET: ${{ secrets.CONSUMERSECRET }}
-      ACCESSTOKEN: ${{ secrets.ACCESSTOKEN }}
-      ACCESSTOKENSECRET: ${{ secrets.ACCESSTOKENSECRET }}
+      TWITTER_CONSUMER_KEY: ${{ secrets.CONSUMERKEY }}
+      TWITTER_CONSUMER_SECRET: ${{ secrets.CONSUMERSECRET }}
+      TWITTER_ACCESS_TOKEN: ${{ secrets.ACCESSTOKEN }}
+      TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.ACCESSTOKENSECRET }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -41,10 +41,6 @@ jobs:
       - name: manual
         if: github.event.inputs.lang
         run: |          
-          echo TWITTER_${CONSUMERKEY} > .env
-          echo TWITTER_${CONSUMERSECRET} >> .env
-          echo TWITTER_${ACCESSTOKEN}  >> .env
-          echo TWITTER_${ACCESSTOKENSECRET} >> .env
           head -n 1 .env
           npm install
           node scripts/twitter.js ${{ github.event.inputs.lang }} ${{ github.event.inputs.year }} ${{ github.event.inputs.month }} ${{ github.event.inputs.day }} 
