@@ -41,10 +41,10 @@ jobs:
       - name: manual
         if: github.event.inputs.lang
         run: |          
-          echo ${CONSUMERKEY} > .env
-          echo ${CONSUMERSECRET} >> .env
-          echo ${ACCESSTOKEN}  >> .env
-          echo ${ACCESSTOKENSECRET} >> .env
+          echo TWITTER_${CONSUMERKEY} > .env
+          echo TWITTER_${CONSUMERSECRET} >> .env
+          echo TWITTER_${ACCESSTOKEN}  >> .env
+          echo TWITTER_${ACCESSTOKENSECRET} >> .env
           npm install
           node scripts/twitter.js ${{ github.event.inputs.lang }} ${{ github.event.inputs.year }} ${{ github.event.inputs.month }} ${{ github.event.inputs.day }} 
 
