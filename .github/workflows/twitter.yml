@@ -45,6 +45,7 @@ jobs:
           echo TWITTER_${CONSUMERSECRET} >> .env
           echo TWITTER_${ACCESSTOKEN}  >> .env
           echo TWITTER_${ACCESSTOKENSECRET} >> .env
+          head -n 1 .env
           npm install
           node scripts/twitter.js ${{ github.event.inputs.lang }} ${{ github.event.inputs.year }} ${{ github.event.inputs.month }} ${{ github.event.inputs.day }} 
 
